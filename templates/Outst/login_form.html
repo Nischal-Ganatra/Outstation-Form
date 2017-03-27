@@ -1,0 +1,41 @@
+{%  extends 'Outst/base.html' %}
+{%  block title %}Login{%  endblock %}
+
+
+
+{%  block body %}
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <div class = "ool-sm-12 col-md-7">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        {% for err in error %}
+                        {% if err %}
+                        <p class="error">Sorry, that's not a valid username or password</p>
+                        {% endif %}
+                        {% endfor %}
+                        <form action="" method="post">
+                            {%  csrf_token %}
+                            <div class="form-group">
+                                <label  class="control-label col-sm-2" for="username">User name:</label>
+                                <input type="text" name="username" value="" id="username"><br><br><br>
+                                <label  class="control-label col-sm-2" for="password">Password:</label>
+                                <input type="password" name="password" value="" id="password"><br><br><br>
+                                <input class="control-label col-sm-2" type="submit" value="login" />
+                                <input type="hidden" name="next" value="{{ next|escape }}" /><br><br>
+
+                                 <h4> New to this site then <a href="{% url 'Outst:register' %}">SignUp</a> </h4>
+                            </div>
+                        </form>
+    {{ err }}
+ {%  endblock %}
+
+
+
+
+
+
+
+
